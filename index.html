@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Participación Ciudadana - Panea Federal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .flag {
+            width: 60px;
+            height: 40px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12, #2ecc71);
+            border-radius: 5px;
+            border: 2px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flag::before {
+            content: "★";
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .referendum-info {
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .referendum-question {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .voting-options {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .option {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .option.approve {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .option.reject {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Info Table */
+        .info-section {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Educational Materials */
+        .education-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .education-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .education-card {
+            background: rgba(255,255,255,0.15);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background: white;
+            margin: 1rem auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        /* Voting Options */
+        .voting-section {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .voting-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .voting-method {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        /* Ballot Simulator */
+        .ballot-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 3rem 0;
+        }
+
+        .ballot-simulator {
+            background: white;
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .ballot-option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ballot-option:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+
+        .ballot-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Guarantees */
+        .guarantees-section {
+            background: linear-gradient(135div, #a8edea 0%, #fed6e3 100%);
+            padding: 3rem 0;
+        }
+
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .guarantee-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .guarantee-item::before {
+            content: "✅";
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .voting-options {
+                flex-direction: column;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="flag"></div>
+                    <div class="site-title">Portal de Participación Ciudadana</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#votaciones">Próximas votaciones</a></li>
+                        <li><a href="#como-votar">Cómo votar</a></li>
+                        <li><a href="#resultados">Resultados</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#accesibilidad">Accesibilidad</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🗳️ REFERÉNDUM NACIONAL — 25 de junio de 2025</h1>
+            
+            <div class="referendum-info">
+                <h2>Propuesta de Ampliación de Terreno Agrícola</h2>
+                <p class="referendum-question">
+                    ¿Debemos ampliar 10.000 hectáreas agrícolas en la región de Vitahe para reforzar la seguridad alimentaria nacional?
+                </p>
+                
+                <div class="voting-options">
+                    <div class="option approve">
+                        ✅ Apruebo la expansión agrícola
+                    </div>
+                    <div class="option reject">
+                        ❌ Rechazo la expansión, manteniendo la protección ambiental actual
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="#" class="btn btn-primary">Ver argumento a favor</a>
+                    <a href="#" class="btn btn-secondary">Ver argumento en contra</a>
+                    <a href="#" class="btn btn-primary">Ver texto completo del proyecto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Resumen Informativo</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📍 Ubicación</h3>
+                    <p>Región de Vitahe</p>
+                </div>
+                <div class="info-card">
+                    <h3>📅 Fecha de votación</h3>
+                    <p>25 de junio de 2025</p>
+                </div>
+                <div class="info-card">
+                    <h3>📃 Tipo de votación</h3>
+                    <p>Referéndum facultativo</p>
+                </div>
+                <div class="info-card">
+                    <h3>⚖️ Quién lo propuso</h3>
+                    <p>Parlamento de Panea Federal</p>
+                </div>
+                <div class="info-card">
+                    <h3>🔍 Supervisión</h3>
+                    <p>Defensor del Pueblo</p>
+                </div>
+                <div class="info-card">
+                    <h3>🧑‍🌾 Motivo</h3>
+                    <p>Aumentar producción nacional de alimentos</p>
+                </div>
+                <div class="info-card">
+                    <h3>🌱 Preocupaciones</h3>
+                    <p>Daño ecológico, impacto en recursos hídricos</p>
+                </div>
+                <div class="info-card">
+                    <h3>♻️ Medidas ambientales</h3>
+                    <p>Energía limpia, reforestación compensatoria, evaluación independiente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Materials -->
+    <section class="education-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Materiales Educativos</h2>
+            
+            <div class="education-content">
+                <div class="education-card">
+                    <h3>📹 Videos explicativos</h3>
+                    <div class="qr-code">QR</div>
+                    <p>Escanea el código QR para acceder a videos informativos imparciales</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1rem;">Ver video informativo</a>
+                </div>
+                
+                <div class="education-card">
+                    <h3>📘 Materiales multiidioma</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>• Español</li>
+                        <li>• Idioma nativo regional</li>
+                        <li>• Lengua de señas</li>
+                        <li>• Versión en Braille</li>
+                        <li>• Audio descripción</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voting Options -->
+    <section class="voting-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Opciones de Votación</h2>
+            
+            <div class="voting-methods">
+                <div class="voting-method">
+                    <h3>🏛️ Voto Anticipado</h3>
+                    <p>Votación presencial antes del día oficial</p>
+                </div>
+                
+                <div class="voting-method">
+                    <h3>💻 Voto Electrónico</h3>
+                    <p>Plataforma segura con autenticación digital</p>
+                </div>
+                
+                <div class="voting-method">
+                    <h3>📍 Día Oficial</h3>
+                    <p>25 de junio en tu centro de votación asignado</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn btn-primary">📍 Consulta tu centro de votación</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ballot Simulator -->
+    <section class="ballot-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Simulador de Boleta</h2>
+            
+            <div class="ballot-simulator">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">📄 Ejemplo de Cartón de Votación</h3>
+                
+                <div class="ballot-option">
+                    <input type="radio" name="vote" id="approve" value="approve">
+                    <label for="approve">✅ Apruebo la expansión agrícola</label>
+                </div>
+                
+                <div class="ballot-option">
+                    <input type="radio" name="vote" id="reject" value="reject">
+                    <label for="reject">❌ Rechazo la expansión</label>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                    <p><strong>✍ Recuerda:</strong> Firma o huella digital requerida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Democratic Guarantees -->
+    <section class="guarantees-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #2c3e50;">Garantías Democráticas</h2>
+            
+            <div class="guarantees-grid">
+                <div class="guarantee-item">
+                    <h3>Observadores Ciudadanos</h3>
+                    <p>Representantes de partidos y sociedad civil</p>
+                </div>
+                
+                <div class="guarantee-item">
+                    <h3>Información Neutra</h3>
+                    <p>Mesas con argumentos equilibrados</p>
+                </div>
+                
+                <div class="guarantee-item">
+                    <h3>Recuento Público</h3>
+                    <p>Proceso transparente con acceso ciudadano</p>
+                </div>
+                
+                <div class="guarantee-item">
+                    <h3>Supervisión Independiente</h3>
+                    <p>Defensor del Pueblo supervisa todo el proceso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contacto Oficial</h3>
+                    <p>📞 +595 (0) 800-VOTO (8686)</p>
+                    <p>✉️ info@participacion.panea.gov</p>
+                    <p>🏛️ Plaza Central, Edificio Democracia</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Legales</h3>
+                    <a href="#">Ley Electoral</a>
+                    <a href="#">Reglamento de Referendos</a>
+                    <a href="#">Código de Ética Electoral</a>
+                    <a href="#">Derechos del Votante</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Accesibilidad</h3>
+                    <a href="#">Guía de Accesibilidad</a>
+                    <a href="#">Solicitar Asistencia</a>
+                    <a href="#">Centros Adaptados</a>
+                    <a href="#">Tecnologías de Apoyo</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Transparencia</h3>
+                    <a href="#">Política de Datos</a>
+                    <a href="#">Seguridad Electoral</a>
+                    <a href="#">Auditorías</a>
+                    <a href="#">Denuncias</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 República Federal de Panea - Portal de Participación Ciudadana</p>
+                <p>Comprometidos con la democracia transparente y participativa</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactivity for ballot simulator
+        document.querySelectorAll('input[name="vote"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.ballot-option').forEach(option => {
+                    option.style.backgroundColor = '';
+                    option.style.borderColor = '#ddd';
+                });
+                
+                this.closest('.ballot-option').style.backgroundColor = '#e8f5e8';
+                this.closest('.ballot-option').style.borderColor = '#27ae60';
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
