@@ -633,7 +633,7 @@
                     <ul>
                         <li><a href="#inicio" class="active">Inicio</a></li>
                         <li><a href="#modelo-politico">Modelo Político</a></li>
-                        <li><a href="#video-informativo">Video Informativo</a></li>
+                        <li><a href="#video-informativo">Audio Informativo</a></li>
                         <li><a href="#proximas-votaciones">Próximas Votaciones</a></li>
                         <li><a href="#accesibilidad">Accesibilidad</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -821,7 +821,7 @@
                 </script>
 
                 <div style="text-align: center; margin-top: 2rem;">
-                    <a href="#video-informativo" class="btn btn-primary">Ver video informativo completo</a>
+                    <a href="#video-informativo" class="btn btn-primary">Reproducir audio informativo completo</a>
                     <a href="#" class="btn btn-secondary">Descargar como podcast</a>
                     <a href="#" class="btn btn-secondary">Ver en lengua de señas</a>
                 </div>
@@ -830,26 +830,28 @@
     </section>
 
     <!-- Video Section -->
+    
     <section id="video-informativo" class="video-section">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Video Informativo</h2>
+            <h2 class="section-title" style="color: white;">Audio Informativo</h2>
             
             <div class="video-container">
                 <h3 style="margin-bottom: 2rem;">Explicación Imparcial del Referéndum</h3>
-                <div class="video-placeholder">
-                    ▶️ VIDEO
-                </div>
+
+                <audio controls style="width: 100%; max-width: 600px; margin: 1rem auto; display: block;">
+                    <source src="audio.mp3" type="audio/mpeg">
+                    Tu navegador no soporta audio HTML5.
+                </audio>
+
                 <p style="margin-bottom: 2rem;">
-                    Video institucional que explica de manera neutral ambas posturas del referéndum, 
+                    Audio institucional que explica de manera neutral ambas posturas del referéndum, 
                     los procedimientos de votación y las implicaciones de cada decisión.
                 </p>
                 
                 <div class="video-controls">
-                    <button class="btn btn-primary">▶️ Reproducir</button>
-                    <button class="btn btn-secondary">🎧 Audio descriptivo</button>
-                    <button class="btn btn-secondary">📝 Subtítulos</button>
+                    <button class="btn btn-primary">🎧 Escuchar</button>
+                    <button class="btn btn-secondary">📝 Transcripción</button>
                     <button class="btn btn-secondary">🤟 Lengua de señas</button>
-                    <button class="btn btn-secondary">📻 Escuchar como podcast</button>
                     <button class="btn btn-secondary">⬇️ Descargar</button>
                 </div>
             </div>
@@ -895,6 +897,6 @@
                 <div class="accessibility-feature">
                     <span class="icon">📱</span>
                     <h3>QR Informativos</h3>
-                    <p>Acceso rápido a videos y audio explicativos</p>
+                    <p>Acceso rápido a audio explicativos</p>
                 </div>
             </div>
