@@ -808,7 +808,10 @@
 
                 <script>
                 function openVotePopup() {
-                    document.getElementById("voteModal").style.display = "flex";
+                    const modal = document.getElementById("voteModal");
+                    if (modal) {
+                        modal.style.display = "flex";
+                    }
                 }
 
                 function submitVote(option) {

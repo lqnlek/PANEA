@@ -27,8 +27,8 @@
 
   <script>
     const vote = localStorage.getItem('userVote');
-    let favor = 27; // votos simulados base
-    let contra = 21;
+    let favor = 0; // votos simulados base
+    let contra = 0;
 
     if (vote === 'favor') favor++;
     else if (vote === 'contra') contra++;
