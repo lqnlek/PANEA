@@ -838,7 +838,7 @@
             <div class="video-container">
                 <h3 style="margin-bottom: 2rem;">Explicación Imparcial del Referéndum</h3>
 
-                <audio controls style="width: 100%; max-width: 600px; margin: 1rem auto; display: block;">
+                <audio id="audioPlayer" controls style="width: 100%; max-width: 600px; margin: 1rem auto; display: block;">
                     <source src="audio.mp3" type="audio/mpeg">
                     Tu navegador no soporta audio HTML5.
                 </audio>
@@ -849,7 +849,7 @@
                 </p>
                 
                 <div class="video-controls">
-                    <button class="btn btn-primary">🎧 Escuchar</button>
+                    <button class="btn btn-primary" onclick="document.getElementById('audioPlayer').play()">▶️ Reproducir</button>
                     <button class="btn btn-secondary">📝 Transcripción</button>
                     <button class="btn btn-secondary">🤟 Lengua de señas</button>
                     <button class="btn btn-secondary">⬇️ Descargar</button>
