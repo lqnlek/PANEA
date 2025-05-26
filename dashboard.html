@@ -1,0 +1,36 @@
+<!-- Dashboard HTML -->
+<!-- Save this as dashboard.html in the same directory -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Resultados</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2rem; background-color: #f0f4f8; }
+    h1 { color: #1e3a8a; }
+    .stat { font-size: 2rem; margin: 1rem; padding: 1rem; border-radius: 8px; }
+    .favor { background-color: #d1fae5; color: #065f46; }
+    .contra { background-color: #dbeafe; color: #1e3a8a; }
+    .back { margin-top: 2rem; display: inline-block; background: #1e3a8a; color: white; padding: 0.7rem 1.5rem; border-radius: 5px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>📊 Resultados del Referéndum</h1>
+  <div class="stat favor">A Favor: <span id="favorCount">0</span></div>
+  <div class="stat contra">En Contra: <span id="contraCount">0</span></div>
+
+  <a href="index.html#proximas-votaciones" class="back">← Volver</a>
+
+  <script>
+    const vote = localStorage.getItem('userVote');
+    let favor = 27; // votos simulados base
+    let contra = 21;
+
+    if (vote === 'favor') favor++;
+    else if (vote === 'contra') contra++;
+
+    document.getElementById('favorCount').innerText = favor;
+    document.getElementById('contraCount').innerText = contra;
+  </script>
+</body>
+</html>
